@@ -72,8 +72,8 @@ const CheckoutStep = () => {
   };
 
   return (
-    <div className='flex max-w-7xl mx-auto gap-x-8 my-8'>
-      <div className='basis-1/2 bg-lavender-mist p-3 '>
+    <div className='flex max-w-7xl mx-auto gap-x-8 my-8 mobile:flex-col mobile:px-6'>
+      <div className='basis-1/2 bg-lavender-mist p-3 mobile:basis-full'>
         <div className={styles.breadcrumbs}>
           <p className={checkoutStep === 1 ? styles.activeStep : ""}>
             Information
@@ -87,14 +87,14 @@ const CheckoutStep = () => {
         </div>
         {checkoutStep !== 1 ? <StepOverview /> : null}
         {handleStep()}
-        <button
+        {/* <button
           className={styles.orderBtn}
           onClick={() => updateOrderSummaryDisplay()}
         >
           View Order Summary
-        </button>
+        </button> */}
       </div>
-      <div className='basis-1/2'>
+      <div className='basis-1/2 mobile:basis-full mobile:mt-10'>
         <CheckoutSummary cart={cart} />
       </div>
     </div>

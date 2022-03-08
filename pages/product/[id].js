@@ -53,8 +53,8 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div className='max-w-7xl mx-auto  my-20'>
-      <div className='flex p-4 shadow-custom gap-10'>
+    <div className='max-w-7xl mx-auto  my-20 mobile:px-4'>
+      <div className='flex p-4 shadow-custom gap-10 mobile:flex-col'>
         <div className='flex gap-4'>
           <div className='flex flex-col gap-3'>
             {product && product.images.map((i, e) => {

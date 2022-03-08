@@ -1,7 +1,12 @@
 import react, { useEffect } from 'react';
 import Link from 'next/Link';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 const Nav = props => {
+    const router = useRouter();
+    const activeLinkHandler = (e) => {
+        return router.pathname == e ? 'text-pink' : ''
+    }
     const mobileNavHandler = () => {
         const menu = document.querySelector(".mobile-menu");
         menu.classList.toggle("-translate-x-full");
@@ -23,14 +28,14 @@ const Nav = props => {
 
                         <div className="hidden md:flex items-center space-x-1 font-lato">
                             <Link href='/'>
-                                <a href="" className="py-4 px-2 link inline-flex   items-center text-pink hover:text-pink transition duration-300">Home
+                                <a href="" className={`py-4 px-2 link inline-flex items-center ${activeLinkHandler('/')}  hover:text-pink transition duration-300`}>Home
                                 </a>
                             </Link>
                             <Link href='/shop'>
-                                <a href="" className="py-4 px-2 link inline-flex   items-center hover:text-pink transition duration-300">Shop</a>
+                                <a href="" className={`py-4 px-2 link inline-flex ${activeLinkHandler('/shop')}   items-center hover:text-pink transition duration-300`}>Shop</a>
 
                             </Link>
-                            <Link href=''>
+                            {/* <Link href=''>
                                 <a href="" className="py-4 px-2 link  hover:text-pink transition duration-300">Products</a>
 
                             </Link>
@@ -39,7 +44,7 @@ const Nav = props => {
                             </Link>
                             <Link href=''>
                                 <a href="" className="py-4 px-2 link  hover:text-pink transition duration-300">Contact</a>
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
                     <div className="sm:hidden flex items-center z-20" onClick={mobileNavHandler}>

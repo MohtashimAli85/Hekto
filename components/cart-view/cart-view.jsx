@@ -19,8 +19,8 @@ const CartView = () => {
 
   return (
     <div className='max-w-7xl mx-auto px-4 my-5'>
-      <div className='flex '>
-        <table className=' basis-3/5  '>
+      <div className='flex mobile:flex-col '>
+        <table className=' basis-3/5 mobile:basis-full '>
           <thead className='text-left '>
             <tr className='text-navy-blue font-semibold h-20'>
               <th>Products</th>
@@ -129,7 +129,7 @@ const CartView = () => {
 
           </tbody>
         </table>
-        <div className=' basis-2/6 ml-20 '>
+        <div className=' basis-2/6 ml-20 mobile:ml-0 mobile:mt-10'>
           <h1 className='text-navy-blue font-semibold text-center text-3xl  mt-4 mb-8'>Cart Totals</h1>
           <div className='bg-lavender-mist p-5 rounded'>
             <div className=' inline-flex justify-between w-full text-navy-blue border-b border-titan-white pb-3'>

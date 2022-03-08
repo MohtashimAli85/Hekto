@@ -7,7 +7,7 @@ function Product(props) {
     const products = props.products;
     console.log(products);
     const getInputHandler = props => {
-        setProducts(props.target.value);
+        setNumProducts(props.target.value);
     }
     const viewHandler = props => {
         let view = props.target.id;
@@ -24,37 +24,25 @@ function Product(props) {
             listView: true
         })
     }
-    const [Numproducts, setNumProducts] = useState(4);
-    const [productArr, setProductArr] = useState([]);
+    const [Numproducts, setNumProducts] = useState(products.length);
+    const [productArr, setProductArr] = useState(products);
     const [view, setView] = useState({
         gridView: true,
         listView: false
     });
-    // useEffect(() => {
-    //     const tempArr = [];
 
-    //     for (let i = 1; i <= products; i++) {
-    //         tempArr.push(i);
-    //     }
-    //     setProductArr(tempArr);
-
-    // }, [products])
-    // useEffect(() => {
-    //     console.log(productArr);
-
-    // })
 
     return (
         <div className='max-w-7xl mx-auto px-4 mobile:mt-6 mt-16'>
             <div className='flex justify-between items-center'>
                 <div className='space-y-2'>
                     <h1 className='text-navy-blue font-bold'>Ecommerce Acceories & Fashion item </h1>
-                    <p className='text-sm font-lato'>About 9,620 results (0.62 seconds)</p>
+                    <p className='text-sm font-lato'>About {products.length} results (0.62 seconds)</p>
                 </div>
                 <div className='text-blue-berry flex gap-x-3'>
                     <div className='flex gap-x-1 items-center'>
                         <p>Per Page:</p>
-                        <input type='number' min='1' max='30' className='border border-lavender-mist px-3' onChange={getInputHandler} />
+                        <input type='number' min='1' max={products.length} className='border border-lavender-mist px-3' onChange={getInputHandler} />
                     </div>
                     <div className='flex gap-x-1 items-center'>
                         <label htmlFor='products'>Sort By:</label>
@@ -80,14 +68,17 @@ function Product(props) {
                 </div>
             </div>
             {view.gridView ? <div className='grid grid-cols-4 gap-20 py-5 products'>
-                {products && products.map(p => {
-                    return (<Card key={p.id} id={p.id} thumb={p.thumbnail} variant={p.variant} title={p.title} />)
+                {products && products.map((p, i) => {
+                    if (i < Numproducts)
+                        return (<Card key={p.id} id={p.id} thumb={p.thumbnail} variant={p.variant} title={p.title} />)
                 })}
             </div> : ''}
             {view.listView ?
                 <div>
-                    {products && products.map(p => {
-                        return (<ListCard key={p.id} id={p.id} thumb={p.thumbnail} variant={p.variant} title={p.title} desc={p.description} />)
+                    {products && products.map((p, i) => {
+                        if (i < Numproducts) {
+                            return (<ListCard key={p.id} id={p.id} thumb={p.thumbnail} variant={p.variant} title={p.title} desc={p.description} />)
+                        }
                     })}
 
                 </div>
