@@ -3,11 +3,11 @@ import styles from "../../styles/shipping-method.module.css";
 import { formatPrice } from "../../utils/helper-functions";
 
 const ShippingMethod = ({ handleOption, option, chosen }) => {
+  const border = 'border-pink';
   return (
     <div
-      className={`${styles.shippingOption} ${
-        option.id === chosen?.id ? styles.chosen : ""
-      }`}
+      className={` border  ${styles.shippingOption} ${option.id === chosen?.id ? border : ""
+        } `}
       onClick={() => handleOption(option)}
       role="button"
       tabIndex="0"

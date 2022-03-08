@@ -31,7 +31,7 @@ const InformationStep = ({ handleSubmit, savedValues, isProcessing }) => {
   });
 
   return (
-    <div style={{ flexGrow: "1" }}>
+    <div >
       <h2>Address</h2>
       <Formik
         initialValues={{
@@ -40,7 +40,7 @@ const InformationStep = ({ handleSubmit, savedValues, isProcessing }) => {
           email: savedValues.email || "",
           address_1: savedValues.address_1 || "",
           address_2: savedValues.address_2 || "",
-          country_code: savedValues.country_code || 
+          country_code: savedValues.country_code ||
             cart?.region?.countries?.[0].iso_2 ||
             "",
           postal_code: savedValues.postal_code || "",
@@ -54,14 +54,14 @@ const InformationStep = ({ handleSubmit, savedValues, isProcessing }) => {
         }}
       >
         {({ errors, touched, values }) => (
-          <Form className={styles.styledform}>
+          <Form className=''>
             {isProcessing ? (
-              <div className={styles.spinner}>
+              <div className=''>
                 <PuffLoader loading={true} size={60} />
               </div>
             ) : (
               <>
-                <div className={styles.sharedrow}>
+                <div className='flex gap-x-4'>
                   <InputField
                     id="first_name"
                     placeholder="First Name"
@@ -105,7 +105,7 @@ const InformationStep = ({ handleSubmit, savedValues, isProcessing }) => {
                   error={errors.country_code && touched.country_code}
                   errorMsg={errors.country_code}
                 />
-                <div className={styles.sharedrow}>
+                <div className='flex gap-x-4'>
                   <InputField
                     id="city"
                     placeholder="City"
@@ -128,8 +128,8 @@ const InformationStep = ({ handleSubmit, savedValues, isProcessing }) => {
                   errorMsg={errors.phone}
                   type="tel"
                 />
-                <div className={styles.btncontainer}>
-                  <button className={styles.formbtn} type="submit">
+                <div className='mt-3 text-right'>
+                  <button className='bg-pink text-white px-6 py-2 rounded' type="submit">
                     Next
                   </button>
                 </div>

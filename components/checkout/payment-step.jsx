@@ -15,7 +15,7 @@ const PaymentStep = () => {
     createPaymentSession();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   const handlePayment = async () => {
     await setPaymentSession("manual")
     router.push(`/payment`);
@@ -43,8 +43,8 @@ const PaymentStep = () => {
                   <h2>Test Payment</h2>
                   <button
                     onClick={handlePayment}
-                    className={styles.payBtn}
                     id="submit"
+                    className='px-3 py-2 text-white bg-pink rounded mt-3'
                   >
                     <span id="button-text">Pay</span>
                   </button>

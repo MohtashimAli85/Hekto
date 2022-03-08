@@ -35,8 +35,24 @@ export const Payment = () => {
       <p>Hang on while we validate your payment...</p>
     </div>
   ) : (
-    <div className={styles.container}>
-      <div className={styles.header}>
+    <div className='max-w-5xl relative flex justify-between flex-col items-center mb-8 border-b-2 border-l-2 px-40 py-20 border-dashed border-[#D2D1D1]  mx-auto'>
+      <div><Image src='/completed.svg' width={80} height={80} alt='completed icon' /></div>
+      <h1 className='text-4xl font-bold text-navy-blue'>Your Order Is Completed</h1>
+      <p className='text-[#8D92A7]  mx-auto text-center my-4'>Thank you for your order! Your order is being processed and will be completed within 3-6
+        hours. You will receive an email confirmation when your order is completed.
+      </p>
+      <div>
+        <Link href='/shop' passHref>
+          <a className='px-4 py-2 bg-pink mb-4 text-white'>Continue Shopping</a>
+        </Link>
+      </div>
+      <div className='absolute top-0 -left-[2.6rem] bg-white h-40 flex items-end'>
+        <Image src='/clock.svg' width={80} height={80} alt='clock' />
+      </div>
+      <div className='absolute -bottom-8 -right-5'>
+        <Image src='/checklist.svg' width={80} height={80} alt='checklist' />
+      </div>
+      {/* <div className={styles.header}>
         <h1>Order Summary</h1>
         <p>Thank you for your order!</p>
       </div>
@@ -63,15 +79,15 @@ export const Payment = () => {
                       passHref
                     >
                       <a>
-                      <div className={itemStyles.placeholder}>
-                        <Image
-                          objectFit="cover"
-                          height="100%"
-                          width="100%"
-                          src={i.variant.product.thumbnail}
-                          alt={`${i.title}`}
-                        />
-                      </div>
+                        <div className={itemStyles.placeholder}>
+                          <Image
+                            objectFit="cover"
+                            height="100%"
+                            width="100%"
+                            src={i.variant.product.thumbnail}
+                            alt={`${i.title}`}
+                          />
+                        </div>
                       </a>
                     </Link>
                   </figure>
@@ -123,7 +139,7 @@ export const Payment = () => {
       </div>
       <div>
         <p>An order confirmation will be sent to you at {order.email}</p>
-      </div>
+      </div> */}
     </div>
   );
 };

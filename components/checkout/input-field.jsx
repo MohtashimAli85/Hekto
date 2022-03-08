@@ -14,17 +14,17 @@ const InputField = ({ id, placeholder, error, errorMsg, type, disabled }) => {
         </p>
       )}
       <div
-        className={`${styles.fieldcontainer} ${error ? styles.errorfield : ""}`}
+        className={`relative border-b-2 border-[#BFC6E0] w-full ${error ? styles.errorfield : ""}`}
       >
         <Field
           id={id}
           name={id}
           placeholder={placeholder}
-          className={styles.styledfield}
+          className='bg-transparent pl-3  py-2 placeholder-[#C1C8E1] w-full'
           type={type}
           disabled={disabled}
         />
-        {error && <MdError className={styles.erroricon} />}
+        {error && <MdError className='absolute text-rose-500 right-2 top-3' />}
       </div>
     </div>
   );

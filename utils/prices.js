@@ -33,6 +33,7 @@ export function getVariantPrice(cart, variant) {
 }
 
 export function formatPrices(cart, variant, digits = 2) {
+
   if (!cart || !cart.region || !variant) return;
   if (!variant.prices) return `15.00 EUR`;
   return formatMoneyAmount(
@@ -42,4 +43,20 @@ export function formatPrices(cart, variant, digits = 2) {
     },
     digits
   );
+}
+export function myformatPrices(cart, price, digit = 2) {
+  const currency_symbols = {
+    'USD': '$', // US Dollar
+    'EU': '€', // Euro
+  }
+  console.log(price);
+  if (!cart || !cart.region || !price) return;
+  if (!price) return `15.00 EUR`;
+  const p = (price / 100).toFixed(2);
+  const currency_name = cart.region.name;
+  const currency = currency_symbols[currency_name];
+  console.log(currency);
+  const fprice = currency + p;
+  console.log(p)
+  return fprice;
 }

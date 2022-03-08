@@ -49,14 +49,14 @@ const ShippingStep = ({ handleDeliverySubmit, isProcessing, cart }) => {
 
   return (
     <div className={styles.container}>
-      <h2>Delivery</h2>
+      <h2 className='text-1xl font-semibold my-3'>Delivery</h2>
       {isEmpty(shippingOptions) || isProcessing ? (
         <div>loading...</div>
       ) : (
         <div>
           {shippingOptions.map((so) => {
             return (
-              <div key={so.id}>
+              <div key={so.id} className='mb-3'>
                 <ShippingMethod
                   option={so}
                   chosen={selectedOption}
@@ -71,14 +71,14 @@ const ShippingStep = ({ handleDeliverySubmit, isProcessing, cart }) => {
         <MdError />
         <p>Select a shipping method</p>
       </div>
-      <div className={styles.controls}>
+      <div className='flex justify-between items-center'>
         <button
-          className={styles.stepBack}
+          className='bg-navy-blue px-1 py-2 rounded text-white basis-2/6 flex items-center gap-x-1'
           onClick={() => updateCheckoutStep(1)}
         >
           <BiLeftArrowAlt /> Back to information
         </button>
-        <button className={styles.nextBtn} onClick={handleSubmit}>
+        <button className='bg-pink px-5 py-2 rounded text-white' onClick={handleSubmit}>
           <span id="button-text">Next</span>
         </button>
       </div>

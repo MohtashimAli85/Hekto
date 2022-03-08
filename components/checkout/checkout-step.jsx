@@ -72,8 +72,8 @@ const CheckoutStep = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.steps}>
+    <div className='flex max-w-7xl mx-auto gap-x-8 my-8'>
+      <div className='basis-1/2 bg-lavender-mist p-3 '>
         <div className={styles.breadcrumbs}>
           <p className={checkoutStep === 1 ? styles.activeStep : ""}>
             Information
@@ -94,7 +94,7 @@ const CheckoutStep = () => {
           View Order Summary
         </button>
       </div>
-      <div className={styles.summary}>
+      <div className='basis-1/2'>
         <CheckoutSummary cart={cart} />
       </div>
     </div>

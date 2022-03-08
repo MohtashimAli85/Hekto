@@ -14,7 +14,7 @@ const SelectField = ({ id, error, errorMsg, type, disabled, options }) => {
         </p>
       )}
       <div
-        className={`${styles.fieldcontainer} ${error ? styles.errorfield : ""}`}
+        className={`w-full border-b-2 border-[#BFC6E0] ${error ? styles.errorfield : ""}`}
       >
         <Field
           id={id}

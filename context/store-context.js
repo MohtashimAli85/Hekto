@@ -9,17 +9,17 @@ export const defaultStoreContext = {
   order: {},
   products: [],
   currencyCode: "eur",
-  addVariantToCart: async () => {},
-  createCart: async () => {},
-  removeLineItem: async () => {},
-  updateLineItem: async () => {},
-  setShippingMethod: async () => {},
-  updateAddress: async () => {},
-  createPaymentSession: async () => {},
-  completeCart: async () => {},
-  retrieveOrder: async () => {},
-  setPaymentSession: async () => {},
-  dispatch: async () => {}
+  addVariantToCart: async () => { },
+  createCart: async () => { },
+  removeLineItem: async () => { },
+  updateLineItem: async () => { },
+  setShippingMethod: async () => { },
+  updateAddress: async () => { },
+  createPaymentSession: async () => { },
+  completeCart: async () => { },
+  retrieveOrder: async () => { },
+  setPaymentSession: async () => { },
+  dispatch: async () => { }
 }
 
 const StoreContext = React.createContext(defaultStoreContext)
