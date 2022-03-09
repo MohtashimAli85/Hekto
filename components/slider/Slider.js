@@ -1,6 +1,7 @@
 
 import react, { useEffect, Fragment } from 'react';
 import React, { useRef, useState } from "react";
+import Link from 'next/link';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from './slider.module.css';
@@ -28,14 +29,15 @@ const Slider = props => {
         <Fragment>
 
             <Swiper
-                pagination={pagination}
                 modules={[Pagination, Autoplay]}
+                pagination={pagination}
+
                 className="bg-pink"
                 autoplay={
-                    router.pathname === '/' ? {
+                    {
                         delay: 2000,
                         disableOnInteraction: false,
-                    } : ''}
+                    }}
                 slidesPerView={1}
             >
                 <SwiperSlide>
@@ -47,10 +49,12 @@ const Slider = props => {
                                     Trends in 2022</h1>
                                 <p className='text-wild-blue font-lato my-2 sm:pr-10 md:pr-20 hidden sm:block'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing
                                     in phasellus non in justo.</p>
-                                <button className='bg-pink rounded-none text-white font-normal px-3 py-2 sm:px-4 sm:py-2 sm:my-3 text-xs sm:text-base'>Shop Now</button>
+                                <Link href='/shop' passHref>
+                                    <button className='bg-pink rounded-none text-white font-normal px-3 py-2 sm:px-4 sm:py-2 sm:my-3 text-xs sm:text-base'>Shop Now</button>
+                                </Link>
                             </section>
                             <section className='overflow-y-clip pt-10 basis-6/12'>
-                                <Image src='/sofa-promotional-header.svg' width={700} height={600} />
+                                <Image src='/sofa-promotional-header.svg' width={700} height={600} alt='sofa promotional header' />
                             </section>
                         </div>
                     </div>
@@ -64,10 +68,13 @@ const Slider = props => {
                                     Trends in 2022</h1>
                                 <p className='text-wild-blue font-lato my-2 sm:pr-10 md:pr-20 hidden sm:block'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing
                                     in phasellus non in justo.</p>
-                                <button className='bg-pink rounded-none text-white font-normal px-3 py-2 sm:px-4 sm:py-2 sm:my-3 text-xs sm:text-base'>Shop Now</button>
+                                <Link href='/shop' passHref>
+                                    <button className='bg-pink rounded-none text-white font-normal px-3 py-2 sm:px-4 sm:py-2 sm:my-3 text-xs sm:text-base'>Shop Now</button>
+                                </Link>
+
                             </section>
                             <section className='overflow-y-clip pt-10 basis-6/12'>
-                                <Image src='/sofa-promotional-header.svg' width={700} height={600} />
+                                <Image src='/sofa-promotional-header.svg' width={700} height={600} alt='sofa promotional header' />
                             </section>
                         </div>
                     </div>
@@ -81,10 +88,12 @@ const Slider = props => {
                                     Trends in 2022</h1>
                                 <p className='text-wild-blue font-lato my-2 sm:pr-10 md:pr-20 hidden sm:block'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing
                                     in phasellus non in justo.</p>
-                                <button className='bg-pink rounded-none text-white font-normal px-3 py-2 sm:px-4 sm:py-2 sm:my-3 text-xs sm:text-base'>Shop Now</button>
+                                <Link href='/shop' passHref>
+                                    <button className='bg-pink rounded-none text-white font-normal px-3 py-2 sm:px-4 sm:py-2 sm:my-3 text-xs sm:text-base'>Shop Now</button>
+                                </Link>
                             </section>
                             <section className='overflow-y-clip pt-10 basis-6/12'>
-                                <Image src='/sofa-promotional-header.svg' width={700} height={600} />
+                                <Image src='/sofa-promotional-header.svg' width={700} height={600} alt='sofa promotional header' />
                             </section>
                         </div>
                     </div>

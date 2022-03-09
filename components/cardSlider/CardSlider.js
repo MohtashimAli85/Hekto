@@ -1,31 +1,22 @@
 import React, { useEffect } from 'react'
 import Card from '../ui/Card'
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { useRouter } from 'next/router';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 // import required modules
-import { Navigation } from "swiper";
+import { Navigation, Autoplay } from "swiper";
 const CardSlider = props => {
-    const temp = (swiper) => swiper.destroy();
-    const swiper = useSwiper();
-    useEffect(() => {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
 
-        return () => {
-            // console.log(swiper);
-            // swiper.destroy(true, true)
-            // swiper.destroy();
-            // swiper.destroy();
-
-        }
-    })
     const products = props.products;
-    const router = useRouter();
+
     return (
-        <Swiper navigation={true} modules={[Navigation]} className="mySwiper" slidesPerView={4}
+        <Swiper modules={[Navigation, Autoplay]} navigation={true} autoplay={
+            {
+                delay: 2000,
+                disableOnInteraction: false,
+            }} className="mySwiper" slidesPerView={4}
             spaceBetween={30}
 
             breakpoints={{
@@ -46,16 +37,12 @@ const CardSlider = props => {
                 }
             }}
 
-            autoplay={
-                router.pathname === '/' ? {
-                    delay: 2000,
-                    disableOnInteraction: false,
-                } : ''}
+
         >
             {products && products.map(p => {
                 return (
                     <SwiperSlide key={p.id}>
-                        <Card id={p.id} thumb={p.thumbnail} title={p.title} variant={p.variants[0]} />
+                        <Card id={p.id} thumb={p.thumbnail} title={p.title} variant={p.variants[0]} products={products} />
                     </SwiperSlide>
                 )
             })}

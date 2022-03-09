@@ -4,29 +4,23 @@ import Header from '../../components/header/Header'
 import { createClient } from "../../utils/client";
 import NavBar from '../../components/navbar/Nav'
 import Product from '../../components/Product/Product'
-import { useSwiper } from 'swiper/react';
-export default function Home({ products }) {
-    const swiper = useSwiper();
-    useEffect(() => {
-        // console.log(swiper);
-        // swiper.destroy();
-    })
+export default function Home(props) {
+
     return (
         <Fragment>
-            {/* <Header /> */}
-            {/* <NavBar activate='shop' /> */}
-            <Product products={products} />
-            <Footer />
+            <Product products={props.products} elapsedTime={props.elapsedTime} />
         </Fragment>
     )
 }
 export const getStaticProps = async () => {
+    const startTime = Date.now();
     const client = createClient();
     const { products } = await client.products.list();
-
+    const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
     return {
         props: {
             products,
+            elapsedTime
         },
     };
 };

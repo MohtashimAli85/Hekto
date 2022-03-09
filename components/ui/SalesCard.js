@@ -10,7 +10,7 @@ const SalesCard = props => {
                     <a className='text-pink pt-2 border-b-[1px] border-pink'>{props.link}</a>
                 </Link>
             </div>
-            <Image src={props.src} width={312} height={170} objectFit={'contain'} objectPosition={'right'} className='self-end' />
+            <Image src={props.src} width={312} height={170} objectFit={'contain'} objectPosition={'right'} className='self-end' alt={props.title} />
         </div>
     )
 }

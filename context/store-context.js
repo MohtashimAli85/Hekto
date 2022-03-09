@@ -1,6 +1,7 @@
-import React, { useEffect, useReducer, useRef } from "react"
+import React, { useEffect, useReducer, useState, useRef } from "react"
 import { createClient } from "../utils/client"
 
+//  const [currencyCode,setCurrencyCode] = useState('eur');
 export const defaultStoreContext = {
   adding: false,
   cart: {
@@ -9,6 +10,7 @@ export const defaultStoreContext = {
   order: {},
   products: [],
   currencyCode: "eur",
+  setCurrencyCode: () => { },
   addVariantToCart: async () => { },
   createCart: async () => { },
   removeLineItem: async () => { },
@@ -43,6 +45,11 @@ const reducer = (state, action) => {
         ...state,
         products: action.payload
       }
+    case "setCurrencyCode":
+      return {
+        ...state,
+        currencyCode: action.payload
+      }
     default:
       return state
   }
@@ -53,7 +60,12 @@ const client = createClient()
 export const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultStoreContext)
   const stateCartId = useRef()
-
+  // const [ccode,setCcode] = useState('eur');
+  const setCurrencyCode = (v) => {
+    // setCcode(v);
+    // defaultStoreContext.currencyCode = v;
+    dispatch({ type: "setCurrencyCode", payload: v });
+  }
   useEffect(() => {
     stateCartId.current = state.cart.id
   }, [state.cart])
@@ -196,6 +208,7 @@ export const StoreProvider = ({ children }) => {
     <StoreContext.Provider
       value={{
         ...state,
+        setCurrencyCode,
         addVariantToCart,
         createCart,
         removeLineItem,

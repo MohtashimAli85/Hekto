@@ -1,12 +1,12 @@
 import Image from 'next/image';
-
+import Link from 'next/link';
 const Banner = props => {
 
     return (
         <div className='bg-titan-white my-20'>
             <div className='px-4 flex mobile:flex-wrap justify-between mx-auto max-w-5xl'>
                 <section className='overflow-y-hidden pt-10 sm:basis-10/12'>
-                    <Image src='/sofa-2.svg' width={700} height={600} />
+                    <Image src='/sofa-2.svg' width={700} height={600} alt='sofa' />
                 </section>
                 <section className={`px-2 self-center font-bold sm:pt-28 sm:basis-7/12`}>
 
@@ -43,7 +43,9 @@ const Banner = props => {
                         </li>
                     </ul>
                     <div className='flex gap-x-4 items-center my-3'>
-                        <button className='bg-pink rounded-none text-white font-normal px-6 py-2'>Shop Now</button>
+                        <Link href='/shop' passHref>
+                            <button className='bg-pink rounded-none text-white font-normal px-3 py-2 sm:px-4 sm:py-2 sm:my-3 text-xs sm:text-base'>Shop Now</button>
+                        </Link>
 
                         <div className='text-dark-indigo'>
                             <h6 >B&B Italian Sofa </h6>

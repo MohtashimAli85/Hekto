@@ -37,7 +37,7 @@ function Product(props) {
             <div className='flex justify-between items-center'>
                 <div className='space-y-2'>
                     <h1 className='text-navy-blue font-bold'>Ecommerce Acceories & Fashion item </h1>
-                    <p className='text-sm font-lato'>About {products.length} results (0.62 seconds)</p>
+                    <p className='text-sm font-lato'>About {products.length} results ({props.elapsedTime} seconds)</p>
                 </div>
                 <div className='text-blue-berry flex gap-x-3'>
                     <div className='flex gap-x-1 items-center'>

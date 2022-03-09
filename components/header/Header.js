@@ -1,7 +1,16 @@
-import react from 'react';
+import react, { useContext, useEffect } from 'react';
 import { quantity, sum } from '../../utils/helper-functions'
 import Link from 'next/link'
+import StoreContext from '../../context/store-context';
 const Header = props => {
+    const { currencyCode, setCurrencyCode } = useContext(StoreContext);
+    useEffect(() => {
+
+        console.log(currencyCode);
+        setCurrencyCode('usd');
+        console.log(currencyCode);
+    }, [])
+
 
     return (
         <div className='bg-purple  py-2 text-white   '>
@@ -37,8 +46,6 @@ const Header = props => {
                         <select name="lang" className='bg-inherit focus:none outline-none'>
                             <option className='p-3 bg-slate-700' value="usd" selected>USD</option>
                             <option className='p-3 bg-slate-700' value="eur">EUR</option>
-                            <option className='p-3 bg-slate-700' value="pod">POD</option>
-                            <option className='p-3 bg-slate-700' value="yen">YEN</option>
                         </select>
                     </li>
                     <li className='inline-flex cursor-pointer items-center'>

@@ -45,6 +45,7 @@ const Product = ({ product }) => {
   };
 
   const handleAddToBag = () => {
+    console.log(options.variantId);
     addVariantToCart({
       variantId: options.variantId,
       quantity: options.quantity,

@@ -5,23 +5,29 @@ import { useRouter } from 'next/router';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/autoplay"
 
 
 
 // import required modules
-import { Navigation, Autoplay } from "swiper";
+// import { Navigation, Autoplay } from "swiper";
+
+import SwiperCore, {
+    Autoplay, Pagination, Navigation
+} from 'swiper/core'
 
 const TopCategories = (props) => {
     const products = props.products;
     const router = useRouter();
     return (
         <div className='mt-20 '>
-            <Swiper navigation={true} modules={[Navigation, Autoplay]} className="mySwiper" slidesPerView={4}
+            <Swiper modules={[Navigation, Autoplay]} navigation={true} className="mySwiper" slidesPerView={4}
                 autoplay={
-                    router.pathname === '/' ? {
+                    {
                         delay: 2000,
                         disableOnInteraction: false,
-                    } : ' '}
+                    }
+                }
                 breakpoints={{
                     // when window width is >= 640px
                     320: {

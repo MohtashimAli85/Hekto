@@ -11,7 +11,15 @@ const Nav = props => {
         const menu = document.querySelector(".mobile-menu");
         menu.classList.toggle("-translate-x-full");
     }
+    useEffect(() => {
 
+        return () => {
+            const menu = document.querySelector(".mobile-menu");
+            if (!menu.classList.contains("-translate-x-full")) {
+                menu.classList.add("-translate-x-full");
+            }
+        }
+    })
 
     return (
         <nav className="bg-white  text-deep-cove py-2">
@@ -19,7 +27,7 @@ const Nav = props => {
                 <div className="flex justify-between items-center">
                     <div className="flex space-x-7">
                         <div>
-                            <Link href=''>
+                            <Link href='/'>
                                 <a href="#" className="flex items-center py-4 px-2  font-medium text-3xl md:text-4xl">
                                     Hekto
                                 </a>
@@ -95,25 +103,16 @@ const Nav = props => {
                 <ul className="">
                     <li className="active">
                         <Link href='/'>
-                            <a href="index.html" className="block text-sm px-4 py-4 ">Home</a>
+                            <a href="index.html" className={`block text-sm px-4 py-4 ${activeLinkHandler('/')} `}>Home</a>
                         </Link>
                     </li>
                     <li>
                         <Link href='/shop'>
-                            <a href="#services" className="block text-sm px-4 py-4 ">Shop</a>
+                            <a href="#services" className={`block text-sm px-4 py-4 ${activeLinkHandler('/shop')} `}>Shop</a>
 
                         </Link>
                     </li>
-                    <li>
-                        <Link href=''>
-                            <a href="#about" className="block text-sm px-4 py-4  transition duration-300 hover:text-pink">About</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href=''>
-                            <a href="#contact" className="block text-sm px-4 py-4  transition duration-300 hover:text-pink">Contact Us</a>
-                        </Link>
-                    </li>
+
                     <li>
                         <form method="GET" className='px-4'>
                             <div className="relative ">
