@@ -9,8 +9,8 @@ export const defaultStoreContext = {
   },
   order: {},
   products: [],
-  currencyCode: "eur",
-  setCurrencyCode: () => { },
+  currencyCode: "",
+  setCurrencyCode: async () => { },
   addVariantToCart: async () => { },
   createCart: async () => { },
   removeLineItem: async () => { },
@@ -30,6 +30,7 @@ export default StoreContext
 const reducer = (state, action) => {
   switch (action.type) {
     case "setCart":
+      // console.log(action);
       return {
         ...state,
         cart: action.payload,
@@ -45,11 +46,7 @@ const reducer = (state, action) => {
         ...state,
         products: action.payload
       }
-    case "setCurrencyCode":
-      return {
-        ...state,
-        currencyCode: action.payload
-      }
+
     default:
       return state
   }
@@ -61,11 +58,47 @@ export const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultStoreContext)
   const stateCartId = useRef()
   // const [ccode,setCcode] = useState('eur');
-  const setCurrencyCode = (v) => {
-    // setCcode(v);
-    // defaultStoreContext.currencyCode = v;
-    dispatch({ type: "setCurrencyCode", payload: v });
+
+  // setCcode(v);
+  // defaultStoreContext.currencyCode = v;
+  const updateCart = async (id) => {
+    let cartId
+    if (localStorage) {
+      cartId = localStorage.getItem("cart_id")
+    }
+    await client.carts.update(cartId, { region_id: (id) });
+    client.carts.retrieve(cartId).then((data) => {
+      console.log(data);
+      dispatch({ type: "setCart", payload: data.cart })
+    })
   }
+  const getRegionId = async (code) => {
+    const regions = await client.regions.list().then(data => {
+      return data.regions
+    })
+    // console.log(data.regions);
+    let id;
+    regions.forEach((e) => {
+      if (e.currency_code === code) {
+        id = e.id;
+      }
+    })
+
+    console.log(id);
+    return id;
+  }
+
+  const setCurrencyCode = async (provider) => {
+    const id = await getRegionId(provider);
+    updateCart(id);
+  }
+  // useEffect(() => {
+  //   setCurrencyCode();
+  // })
+
+
+
+
   useEffect(() => {
     stateCartId.current = state.cart.id
   }, [state.cart])
@@ -78,10 +111,12 @@ export const StoreProvider = ({ children }) => {
 
     if (cartId) {
       client.carts.retrieve(cartId).then((data) => {
+        console.log(data);
         dispatch({ type: "setCart", payload: data.cart })
       })
     } else {
       client.carts.create().then((data) => {
+        console.log(data);
         dispatch({ type: "setCart", payload: data.cart })
         if (localStorage) {
           localStorage.setItem("cart_id", data.cart.id)

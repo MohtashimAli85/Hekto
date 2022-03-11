@@ -18,7 +18,7 @@ import Blog from '../components/Blog/Blog';
 import Footer from '../components/footer/Footer';
 export default function Home({ products }) {
   // const { cart } = useContext(StoreContext)
-  // console.log(products);
+  console.log(products);
   return (
     <Fragment>
 

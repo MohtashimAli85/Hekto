@@ -3,13 +3,19 @@ import { quantity, sum } from '../../utils/helper-functions'
 import Link from 'next/link'
 import StoreContext from '../../context/store-context';
 const Header = props => {
-    const { currencyCode, setCurrencyCode } = useContext(StoreContext);
-    useEffect(() => {
-
-        console.log(currencyCode);
-        setCurrencyCode('usd');
-        console.log(currencyCode);
-    }, [])
+    const { setCurrencyCode } = useContext(StoreContext);
+    const currencyHandler = (e) => {
+        console.log(e.target.value);
+        setCurrencyCode(e.target.value);
+    }
+    // setCurrencyCode('eur');
+    // useEffect(() => {
+    //     console.log(currencyCode);
+    //     setTimeout(() => {
+    //         setCurrencyCode('usd');
+    //         console.log(currencyCode);
+    //     }, 500)
+    // }, [])
 
 
     return (
@@ -43,8 +49,8 @@ const Header = props => {
                         </select>
                     </li>
                     <li className='inline-flex cursor-pointer'>
-                        <select name="lang" className='bg-inherit focus:none outline-none'>
-                            <option className='p-3 bg-slate-700' value="usd" selected>USD</option>
+                        <select id='currency' onChange={currencyHandler} name="lang" className='bg-inherit focus:none outline-none' defaultValue='eur'>
+                            <option className='p-3 bg-slate-700' value="usd" >USD</option>
                             <option className='p-3 bg-slate-700' value="eur">EUR</option>
                         </select>
                     </li>

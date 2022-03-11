@@ -34,7 +34,7 @@ function Product(props) {
 
     return (
         <div className='max-w-7xl mx-auto px-4 mobile:mt-6 mt-16'>
-            <div className='flex justify-between items-center'>
+            <div className='flex justify-between items-center flex-wrap gap-3'>
                 <div className='space-y-2'>
                     <h1 className='text-navy-blue font-bold'>Ecommerce Acceories & Fashion item </h1>
                     <p className='text-sm font-lato'>About {products.length} results ({props.elapsedTime} seconds)</p>
@@ -67,7 +67,7 @@ function Product(props) {
                     </div>
                 </div>
             </div>
-            {view.gridView ? <div className='grid grid-cols-4 gap-20 py-5 products'>
+            {view.gridView ? <div className='grid lg:grid-cols-4 gap-20 py-5 products md:grid-cols-3 sm:grid-cols-2 mobile:grid-cols-1'>
                 {products && products.map((p, i) => {
                     if (i < Numproducts)
                         return (<Card key={p.id} id={p.id} thumb={p.thumbnail} variant={p.variant} title={p.title} />)

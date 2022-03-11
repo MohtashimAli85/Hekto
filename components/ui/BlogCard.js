@@ -1,10 +1,10 @@
 import React from 'react'
-import Link from 'next/Link'
+import Link from 'next/link'
 import Image from 'next/image'
 function BlogCard() {
     return (
         <div className='text-navy-blue shadow-md flex flex-col '>
-            <Image src='/blog.png' width={300} height={200} className='rounded-lg' />
+            <Image src='/blog.png' width={300} height={200} className='rounded-lg' alt='blog pic' />
             <div className='flex gap-6 text-sm px-4 mt-2'>
                 <p className='inline-flex items-center'>
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -6,7 +6,8 @@ import { formatPrices, resetOptions } from '../../utils/prices';
 import { createClient } from '../../utils/client';
 
 const Card = props => {
-    const { cart } = useContext(StoreContext);
+    const { cart, currencyCode } = useContext(StoreContext);
+    // console.log(cart.region.currency_code);
     // console.log(formatPrices(cart, props.variant));
     return (
         <div className='group shadow-lg rounded flex-grow-0 flex-shrink-0 basis-72 transition  cursor-pointer' key={props.id}>
