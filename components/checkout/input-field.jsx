@@ -4,32 +4,20 @@ import styles from "../../styles/input-field.module.css";
 import { MdError } from "react-icons/md";
 
 const InputField = ({ id, placeholder, error, errorMsg, type, disabled }) => {
-  const [value, setValue] = useState('');
 
-  const [err, setErr] = useState(error);
-
-  const inputHandler = (e) => {
-    setValue(e.target.value);
-    const val = e.target.value;
-    const classList = e.target.classList;
-    if (val != '') {
-
-      if (classList.contains('bg-transparent')) {
-        classList.add('bg-white');
-        classList.remove('bg-transparent');
+  useEffect(() => {
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(e => {
+      if (e.value != '') {
+        e.classList.add('bg-white');
+        e.classList.remove('bg-transparent');
+      } else {
+        e.classList.add('bg-transparent');
+        e.classList.remove('bg-white');
       }
-      setErr(false);
+    })
+  })
 
-    } else {
-      if (classList.contains('bg-white')) {
-        classList.add('bg-transparent');
-        classList.remove('bg-white');
-      }
-      setErr(true);
-
-    }
-
-  }
   return (
     <div className={styles.container}>
 

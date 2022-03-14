@@ -40,18 +40,18 @@ const Header = props => {
                     </h6>
                 </div>
                 <ul className='flex gap-x-2 items-center mobile:w-full justify-between'>
-                    <li className='inline-flex cursor-pointer'>
-                        <select name="lang" className='bg-inherit focus:none outline-none'>
-                            <option className='p-3 bg-slate-700' value="english" selected>English</option>
-                            <option className='p-3 bg-slate-700' value="urdu">Urdu</option>
-                            <option className='p-3 bg-slate-700' value="pashot">Pashot</option>
-                            <option className='p-3 bg-slate-700' value="spansih">Spanish</option>
+                    <li className='inline-flex cursor-pointer '>
+                        <select name="lang" className='bg-inherit focus:none outline-none px-2'>
+                            <option className='mt-3 bg-slate-700' value="english" selected>English</option>
+                            <option className=' bg-slate-700' value="urdu">Urdu</option>
+                            <option className=' bg-slate-700' value="pashot">Pashot</option>
+                            <option className=' bg-slate-700' value="spansih">Spanish</option>
                         </select>
                     </li>
-                    <li className='inline-flex cursor-pointer'>
+                    <li className='inline-flex cursor-pointer '>
                         <select id='currency' onChange={currencyHandler} name="lang" className='bg-inherit focus:none outline-none' defaultValue='eur'>
-                            <option className='p-3 bg-slate-700' value="usd" >USD</option>
-                            <option className='p-3 bg-slate-700' value="eur">EUR</option>
+                            <option className=' bg-slate-700' value="usd" >USD</option>
+                            <option className=' bg-slate-700' value="eur">EUR</option>
                         </select>
                     </li>
                     <li className='inline-flex cursor-pointer items-center'>
